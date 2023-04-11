@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -56,6 +57,25 @@ namespace EcommerceShop
             {
                 BindGridView(1); // Hiển thị trang đầu tiên khi trang được tải lần đầu tiên
             }
+        }
+        [HttpMethod]
+
+        protected void gvProducts_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GridView1.Rows[index];
+                int productId = Convert.ToInt32(row.Cells[0].Text);
+                Response.Redirect("Admin.aspx?id=" + productId);
+            }
+        }
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string productId = btn.CommandArgument;
+            Console.WriteLine(productId);
+            Response.Redirect("admin.aspx?id=" + productId);
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {

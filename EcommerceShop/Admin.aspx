@@ -176,7 +176,15 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button ID="btnEdit" CssClass="button" runat="server" Text="Cập nhật" CommandName="Edit" />
+<%--                                <asp:Button ID="btnEdit" CssClass="button"  runat="server" Text="Cập nhật" CommandName="Edit" />--%>
+                                <%--<button  ID="btnEdit" class="button"  runat="server" Text="Cập nhật" CommandName="Edit">
+                                    <a href="<%#DataItemIndex %>"></a>
+                                    Cập nhật</button>--%>
+                                 <button ID="btnEdit" class="button" runat="server" Text="Cập nhật" 
+                    CommandName="Edit" CommandArgument='<%# Eval("ProductID") %>'>
+                    Cập nhật
+                </button>
+                </button>
                                 <asp:Button ID="btnDelete" CssClass="button" runat="server" Text="Xóa" CommandName="Delete" OnClientClick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');" />
                             </ItemTemplate>
                         </asp:TemplateField>

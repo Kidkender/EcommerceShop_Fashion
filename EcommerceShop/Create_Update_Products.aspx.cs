@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Protocols;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
@@ -18,7 +20,7 @@ namespace EcommerceShop
             if (!IsPostBack)
             {
                 int productId = Convert.ToInt32(Request.QueryString["ProductID"]);
-                if (productId == null)
+                if (productId<0)
                 {
                     Getdata(1);
 
@@ -30,6 +32,7 @@ namespace EcommerceShop
                 }
             }
         }
+        [HttpMethod]
         private void Getdata(int id)
         {
          
@@ -37,7 +40,7 @@ namespace EcommerceShop
                 conn.Open();
                 string sql = "SELECT * FROM Products where productid=@id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@ProductName", id);
+                cmd.Parameters.AddWithValue("@id", id);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -86,6 +89,15 @@ namespace EcommerceShop
                 return false; // Cập nhật thất bại
             }
 
+        }
+        protected void Clear() {
+            txtUnitPrice.Text = string.Empty;
+            txtCategory.Text = string.Empty;
+            txtSupplier.Text = string.Empty;
+            txtProductName.Text =string.Empty;
+            txtDescription.Text=string.Empty;
+            txtImageUrl.Text = string.Empty;
+            txtProductName.Focus();
         }
 
 

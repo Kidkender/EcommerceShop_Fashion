@@ -28,6 +28,7 @@ namespace EcommerceShop
 
                 //xử lý login
                 DataRow[] rows = tblUsers.Select(string.Format("UserName='{0}'", tentruycap));
+
                 if (rows.Length == 1)//đúng tên truy cập
                 {
                     //đúng mật khẩu
@@ -35,7 +36,17 @@ namespace EcommerceShop
                     {
                         //được đăng nhập 
                         Session["UserID"] = Convert.ToInt32(rows[0]["UserId"]);
-                        Response.Redirect("/Home.aspx");
+
+                        if (rows[0]["userrole"].ToString().Equals("admin"))
+                        {
+                            Response.Redirect("/Admin.aspx");
+
+                        }
+                        else
+                        {
+                            Response.Redirect("/Home.aspx");
+
+                        }
                     }
                 }
             }
