@@ -25,6 +25,35 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .input-st{
+            display: block;
+            width: 100%;
+            border: none;
+            outline: none;
+            padding: 1rem 1.5rem;
+            background-color: #000000;
+            border-radius: 100px;
+            color: #1d1f43;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 18px;
+            height: 45px;
+        }
+        .btn-ct{
+            width: 100%;
+            background: linear-gradient(90deg, #6415ff 0%, #9035dc 45.83%, #f78297 100%);
+            padding: 0.5rem;
+            border-radius: 100px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 28px;
+            text-align: center;
+            letter-spacing: -0.04em;
+            color: #000000;
+        }
+    </style>
 </head>
 <body>
     <style>
@@ -85,20 +114,26 @@
     </style>
     <!-- Page Header End -->
     <div class="wrapper">
-        <form id="form1" class="form-signin" runat="server">
+        <form id="form1" class="form-signin" runat="server" style="box-shadow: rgb(0 0 0 / 80%) 0 0 25px;
+    width: 450px;
+    padding: 2rem;
+    max-width: 90%;
+    background: rgba(0, 0, 0, 0.22);
+    border-radius: 20px;
+    text-align: center;">
             <h2 class="form-signin-heading text-center">Đăng ký</h2>
             <form method="post" action="Register.aspx">
-                <input type="text" class="form-control" name="txtTentruycap" id="txtTentruycap" placeholder="Tên đăng nhập" required="" autofocus="" />
+                <input type="text" class="form-control input-st" name="txtTentruycap" id="txtTentruycap" placeholder="Tên đăng nhập" required="" autofocus="" />
                 <br />
-                <input type="password" class="form-control" name="txtMatkhau" id="txtMatkhau" placeholder="Mật khẩu" required="" />
+                <input type="password" class="form-control input-st" name="txtMatkhau" id="txtMatkhau" placeholder="Mật khẩu" required="" />
                 <br />
-                <input type="text" class="form-control" name="TxtTen" id="TxtTen" placeholder="Tên" required="" />
+                <input type="text" class="form-control input-st" name="TxtTen" id="TxtTen" placeholder="Tên" required="" />
                 <br />
-                <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email Address" required="" autofocus="" />
+                <input type="text" class="form-control input-st" name="txtEmail" id="txtEmail" placeholder="Email Address" required="" autofocus="" />
                 <br />
-                <input type="text" class="form-control" name="txtAddress" id="txtAddress" placeholder="Address" required="" autofocus="" />
+                <input type="text" class="form-control input-st" name="txtAddress" id="txtAddress" placeholder="Address" required="" autofocus="" />
                 <br />
-                <button class="btn btn-lg btn-primary btn-block" ype="submit" value="Đăng ký">Đăng ký</button>
+                <button class="btn btn-lg btn-primary btn-block btn-ct" ype="submit" value="Đăng ký">Đăng ký</button>
                  <a href="Login" value="Đăng ký" style="color:blue">Đã có tài khoản? Đăng nhập ngay</a><a href="Home" style="color:blue"> Trang chủ</a>
             </form>
         </form>

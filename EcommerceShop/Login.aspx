@@ -82,7 +82,7 @@
     </style>
     <!-- Page Header End -->
     <div class="wrapper">
-        <form id="form1" class="form-signin" runat="server" style="    box-shadow: rgb(0 0 0 / 80%) 0 0 25px;
+        <form id="form1" class="form-signin" runat="server" style="box-shadow: rgb(0 0 0 / 80%) 0 0 25px;
     width: 450px;
     padding: 2rem;
     max-width: 90%;
