@@ -31,7 +31,7 @@ namespace EcommerceShop
                 if (count > 0)
                 {
                     Session["UserID"] = tentruycap;
-                    Response.Redirect("/Home.aspx");
+                    Response.Redirect("/Login.aspx");
                 }
                 else
                 {
