@@ -57,7 +57,8 @@
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
                 <h3 class="font-weight-semi-bold mb-4"><asp:Label ID="txtprice" runat="server" Text="Label"></asp:Label></h3>
-                <p class="mb-4"><asp:Label runat="server" ID="txtdescription" Text="Label"></asp:Label></p>
+                <p class="mb-4">
+                    <asp:Label runat="server" ID="txtdescription" Text="Label"></asp:Label></p>
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     <form>
