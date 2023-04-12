@@ -15,7 +15,6 @@ namespace EcommerceShop
     public partial class Products : System.Web.UI.Page
     {
         SqlConnection conn = new SqlConnection("Data Source=ACER; Integrated Security=true;Initial Catalog=db_ECommerceShop; uid=sa; pwd=1; ");
-        DataSet dataset = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
