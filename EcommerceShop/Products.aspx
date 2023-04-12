@@ -80,8 +80,8 @@
                             <h3><%# Eval("Name") %></h3>
                             <p>Price: <%# Eval("Price") %></p>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="Detail" ype="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1" ></i>Thêm vào giỏ hàng</a>
+                                <a  href="Detail.aspx?id=<%#Eval("productid")%>" ype="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
+                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1" onclick="checklogin()"></i>Thêm vào giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -94,4 +94,27 @@
  
 
 </body>
+    <script type="text/javascript">
+        function checkLogin() {
+            var isLoggedIn = '<%= Session["IsLoggedIn"] %>';
+            if (isLoggedIn === "True") {
+                // Nếu đã đăng nhập thì trả về true để thực hiện chức năng thêm vào giỏ hàng
+                return true;
+            } else {
+                // Nếu chưa đăng nhập thì chuyển hướng đến trang đăng nhập
+                window.location.href = "login.aspx";
+                return false;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#btnAddToCart').click(function () {
+                // Kiểm tra đăng nhập trước khi thêm vào giỏ hàng
+                if (checkLogin()) {
+                    // Thực hiện chức năng thêm vào giỏ hàng
+                    // ...
+                }
+            });
+        });
+    </script>
 </html>

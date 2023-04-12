@@ -8,11 +8,15 @@ using System.Web.UI.WebControls;
 using Microsoft.Practices.EnterpriseLibrary.Common;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.ObjectBuilder;
+using System.Data.SqlClient;
+using System.Collections;
 
 namespace EcommerceShop
 {
     public partial class Login : System.Web.UI.Page
     {
+        SqlConnection conn = new SqlConnection("Data Source=ACER; Integrated Security=true;Initial Catalog=db_ECommerceShop; uid=sa; pwd=1; ");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.Form.Count > 0)
@@ -28,7 +32,7 @@ namespace EcommerceShop
 
                 //xử lý login
                 DataRow[] rows = tblUsers.Select(string.Format("UserName='{0}'", tentruycap));
-
+                
                 if (rows.Length == 1)//đúng tên truy cập
                 {
                     //đúng mật khẩu
@@ -57,5 +61,22 @@ namespace EcommerceShop
                 Response.Redirect("/Login.aspx");
             }
         }
+
+        public bool checkLogin()
+        {
+            int count = 0;
+            string sql = "SELECT COUNT(*) FROM login_session";
+            SqlCommand command = new SqlCommand(sql, conn);
+            conn.Open();
+            count = (int)command.ExecuteScalar();
+            conn.Close();
+
+            if (count>0)
+            {
+                return true;
+            }
+            return false;
+        }
+    
     }
 }

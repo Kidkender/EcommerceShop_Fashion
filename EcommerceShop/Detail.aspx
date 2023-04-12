@@ -23,7 +23,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="img/1 (1).png" alt="Image">
+                            <asp:Image runat="server" id="imgProduct" class="w-100 h-100"  alt="Image" />
                         </div>
                         <div class="carousel-item">
                             <img class="w-100 h-100" src="img/1 (1).png" alt="Image">
@@ -45,7 +45,7 @@
             </div>
 
             <div class="col-lg-7 pb-5">
-                <h3 class="font-weight-semi-bold"><asp:Label ID="Label1" runat="server" Text="Label">Đầm Kẻ Dáng Ôm</asp:Label></h3>
+                <h3 class="font-weight-semi-bold"><asp:Label ID="txtname" runat="server" Text="Label"></asp:Label></h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
                         <small class="fas fa-star"></small>
@@ -56,8 +56,8 @@
                     </div>
                     <small class="pt-1">(50 Reviews)</small>
                 </div>
-                <h3 class="font-weight-semi-bold mb-4"><asp:Label ID="Label2" runat="server" Text="Label">597.000đ</asp:Label></h3>
-                <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
+                <h3 class="font-weight-semi-bold mb-4"><asp:Label ID="txtprice" runat="server" Text="Label"></asp:Label></h3>
+                <p class="mb-4"><asp:Label runat="server" ID="txtdescription" Text="Label"></asp:Label></p>
                 <div class="d-flex mb-3">
                     <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                     <form>

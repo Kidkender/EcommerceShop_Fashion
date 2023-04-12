@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.FriendlyUrls;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,6 +17,7 @@ namespace EcommerceShop
     public partial class Products : System.Web.UI.Page
     {
         SqlConnection conn = new SqlConnection("Data Source=ACER; Integrated Security=true;Initial Catalog=db_ECommerceShop; uid=sa; pwd=1; ");
+        DataSet dataset = new DataSet();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -27,10 +30,18 @@ namespace EcommerceShop
                     int categoryId = Convert.ToInt32(id);
                     GetProductList(categoryId);
                 }
+                else
+                {
+                    RouteDirect("Shop.aspx");
+                }    
 
             }
 
 
+        }
+        private void RouteDirect(string url)
+        {
+            Response.Redirect(url);
         }
         [WebMethod]
         public void GetProductList(int categoryId)
