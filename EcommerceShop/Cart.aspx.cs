@@ -35,7 +35,7 @@ namespace EcommerceShop
             string query = "SELECT * FROM productImages,products WHERE ProductImages.ProductId =Products.productId and CategoryId = @userid";
             SqlCommand command = new SqlCommand(query, conn);
 
-            command.Parameters.AddWithValue("@CategoryId", categoryId);
+            command.Parameters.AddWithValue("@CategoryId",userid);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataSet dataset = new DataSet();
             adapter.Fill(dataset, "Products");
