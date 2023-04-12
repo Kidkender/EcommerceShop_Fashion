@@ -192,7 +192,7 @@
                                     </div>
                                     <div class="card-footer d-flex justify-content-between bg-light border">
                                         <a href="Detail.aspx?id=<%#Eval("productid")%>" ype="submit" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
-                                        <a href="#" class="btn btn-sm text-dark p-0" onclick=""><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                        <a href="#" class="btn btn-sm text-dark p-0" onclick="checkLogin()"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -251,6 +251,19 @@
             var element = document.getElementById("navbar-vertical");
             element.classList.remove("show");
         })
+        function checkLogin() {
+            var userId = '<%=Session["UserID"]%>'; // lấy giá trị của biến UserID từ Session
+
+            if (userId !== '' && userId !== undefined && userId > 0) { // kiểm tra giá trị của UserId
+                // Người dùng đã đăng nhập
+                alert('Thêm sản phẩm vào giỏ hàng thành công!');
+                return true;
+            } else {
+                // Người dùng chưa đăng nhập
+                window.location.href = '/Login.aspx'; // điều hướng trang tới trang Login.aspx
+                return false;
+            }
+        }
 
     </script>
 </asp:Content>
