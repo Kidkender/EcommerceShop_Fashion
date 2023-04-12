@@ -1,0 +1,279 @@
+﻿body {
+    font: normal 12px Arial;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    width: 100%;
+}
+
+.container {
+    padding: 0 40px;
+}
+
+.header {
+    height: 60px;
+    overflow: hidden;
+    background: #77c7ff
+}
+
+.logo {
+    float: left;
+    line-height: 50px;
+    width: 19%;
+}
+
+    .logo img {
+        width: 95%;
+        height: 43px;
+        padding: 7px;
+    }
+
+.loai {
+    float: left;
+    line-height: 50px;
+    width: 10%;
+    font-weight: bold;
+    margin-left: 10px;
+    text-align: center;
+    background-color: white;
+    margin-top: 5px;
+}
+
+    .loai > a {
+        text-decoration: none;
+        padding: 30px;
+        color: black
+    }
+
+    .loai:hover {
+        background-color: gray;
+    }
+
+.search {
+    float: right;
+    line-height: 50px;
+    margin-top: 5px;
+    margin-right: 20px;
+    position: relative
+}
+
+.searchtxt {
+    height: 35px
+}
+
+.accMenu {
+    float: right;
+    line-height: 50px;
+}
+
+.cotents {
+    width: 100%;
+    height: 300px;
+    margin-top: 15px
+}
+
+.mySlides {
+    height: 290px;
+    width: 100%;
+    display: none;
+}
+
+.dot {
+    cursor: pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: grey;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .active, .dot:hover {
+        background-color: black;
+    }
+
+/* Thêm hiệu ứng khi chuyển đổi các slide */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 3s;
+    animation-name: fade;
+    animation-duration: 3s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.sanpham {
+    width: 93%;
+    padding: 0 40px;
+    margin-top: 20px;
+}
+
+.products {
+    width: 100%;
+}
+
+.product {
+    width: 20%;
+    border: 1px solid blue;
+    text-align: center;
+    padding: 5px;
+    margin: 1%;
+    overflow: hidden;
+    float: left
+}
+
+    .product > img {
+        width: 100%;
+        height: 200px;
+        transition-duration: 1s;
+    }
+
+        .product > img:hover {
+            transform: scale(1.1);
+        }
+
+    .product > .info {
+        background: linear-gradient(#3baaff,blue);
+        padding: 8px;
+        color: white;
+        overflow: hidden;
+    }
+
+.info2 {
+    background: linear-gradient(#3baaff,blue);
+    padding: 8px;
+    color: white;
+    text-align: center;
+}
+
+h1.subject {
+    font-size: 30px;
+    color: white;
+    background-color: darkblue;
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+    width: 25%;
+    margin-bottom: 0;
+}
+
+.line {
+    width: 100%;
+    height: 5px;
+    background-color: darkblue;
+}
+
+.phanTrang {
+    float: right;
+    margin-top: -20px;
+}
+
+.footer li {
+    list-style-type: none;
+}
+
+.footer {
+    background-color: lightblue;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    clear: both;
+}
+
+.cottrai {
+    float: left;
+    width: 20%;
+    box-sizing: border-box;
+    border: solid 1px #dfdfdf;
+}
+
+    .cottrai > ul > li {
+        list-style: none;
+        font-size: initial;
+        padding: 5px
+    }
+
+.linkbtn {
+    color: black;
+    text-decoration: none;
+}
+
+    .linkbtn:hover {
+        color: blue;
+    }
+
+.head {
+    background-color: lightblue;
+    padding: 10px;
+    font-weight: bold;
+    border-top: solid 1px #dfdfdf;
+    border-bottom: solid 1px #dfdfdf;
+    text-align: center;
+}
+
+.cotphai {
+    float: right;
+    width: 75%;
+}
+
+.cottraiSP {
+    float: left;
+    width: 40%;
+    padding-top: 15px
+}
+
+.cotphaiSP {
+    float: right;
+    width: 55%;
+    padding-top: 15px
+}
+
+.anhSP {
+    width: 100%;
+}
+
+.anh {
+    margin: auto;
+    width: 100%;
+    height: 300px
+}
+
+.tablePro {
+    width: 100%;
+    height: 360px;
+}
+
+    .tablePro tr td {
+        box-sizing: border-box;
+        border: solid 1px black;
+        width: 70%;
+        text-align: center;
+        font-weight: bold
+    }
+
+.button {
+    width: 100%;
+    font-size: 15px;
+    height: 60px;
+}
