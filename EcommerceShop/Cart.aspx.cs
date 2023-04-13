@@ -56,6 +56,7 @@ namespace EcommerceShop
             dataTable.Columns.Add("soluong");
             int soluong=0;
             int gia=0;
+            long total = 0;
             while (reader.Read())
             {
                 DataRow row = dataTable.NewRow();
@@ -63,10 +64,12 @@ namespace EcommerceShop
                 row["tensp"] = reader["tensp"].ToString();
                 row["gia"]=reader["gia"].ToString();
                 row["soluong"] = reader["soluong"].ToString();
-               
+                soluong = int.Parse(reader["soluong"].ToString());
+                gia = int.Parse(reader["gia"].ToString());
                 dataTable.Rows.Add(row);
+                total =total+ gia * soluong;
             }
-    
+            
             reader.Close();
             GridView1.DataSource = dataTable;
             GridView1.DataBind();
