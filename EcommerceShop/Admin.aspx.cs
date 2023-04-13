@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.EnterpriseLibrary.Data;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,6 +10,7 @@ using System.Web;
 using System.Web.Services.Protocols;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace EcommerceShop
 {
@@ -19,43 +21,11 @@ namespace EcommerceShop
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //conn.Open();
-            //string sql = "SELECT * FROM Products";
-            //SqlCommand cmd = new SqlCommand(sql, conn);
-            //SqlDataReader reader = cmd.ExecuteReader();
-            ////while (reader.Read())
-            ////{
-            ////    string productID = reader["ProductID"].ToString();
-            ////    string productName = reader["Name"].ToString();
-            ////    string productDescription = reader["Description"].ToString();
-            ////    decimal productPrice = Convert.ToDecimal(reader["Price"]);
-
-            ////}
-
-            //DataTable dataTable = new DataTable();
-            //dataTable.Columns.Add("ProductID");
-            //dataTable.Columns.Add("Name");
-            //dataTable.Columns.Add("Description");
-            //dataTable.Columns.Add("Price", typeof(decimal));
-            //while (reader.Read())
-            //{
-            //    DataRow row = dataTable.NewRow();
-            //    row["ProductID"] = reader["ProductID"].ToString();
-            //    row["Name"] = reader["Name"].ToString();
-            //    row["Description"] = reader["Description"].ToString();
-            //    row["Price"] = Convert.ToDecimal(reader["Price"]);
-            //    dataTable.Rows.Add(row);
-            //}
-            //reader.Close();
-            //GridView1.DataSource = dataTable;
-            //GridView1.DataBind();
-
-
-            //conn.Close();
+           
 
             if (!IsPostBack)
             {
-                BindGridView(1); // Hiển thị trang đầu tiên khi trang được tải lần đầu tiên
+                BindGridView(); // Hiển thị trang đầu tiên khi trang được tải lần đầu tiên
             }
         }
         [HttpMethod]
@@ -77,67 +47,99 @@ namespace EcommerceShop
             Console.WriteLine(productId);
             Response.Redirect("admin.aspx?id=" + productId);
         }
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void LinkDelete_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "Edit")
+            int rowIndex = ((GridViewRow)(sender as Control).NamingContainer).RowIndex;
+            int productid = Convert.ToInt32(GridView1.Rows[rowIndex].Cells[0].Text);
+
+
+            Database db = DatabaseFactory.CreateDatabase("strConnet");
+
+            string procName = "spDelete_Product";
+            int count = db.ExecuteNonQuery(procName, productid);
+
+
+            if (count > 0)
             {
-                // Xử lý lệnh "Cập nhật"
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = GridView1.Rows[index];
-                string productId = row.Cells[0].Text; // Lấy giá trị ProductID từ cột đầu tiên của hàng
-                                                      // Thực hiện các thao tác cập nhật dữ liệu cho sản phẩm có ProductID tương ứng
+                BindGridView();
             }
-            else if (e.CommandName == "Delete")
-            {
-                // Xử lý lệnh "Xóa"
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = GridView1.Rows[index];
-                string productId = row.Cells[0].Text; // Lấy giá trị ProductID từ cột đầu tiên của hàng
-                                                      // Thực hiện các thao tác xóa sản phẩm có ProductID tương ứng
-            }
+
+
+        }
+        protected void LinkUpdate_Click(object sender, EventArgs e)
+        {
+            int rowIndex = ((GridViewRow)(sender as Control).NamingContainer).RowIndex;
+            int productid = Convert.ToInt32(GridView1.Rows[rowIndex].Cells[0].Text);
+
+
+            Response.Redirect("Create_Update_Products?productID=" + productid);
+
+
         }
 
-        protected void BindGridView(int pageNumber)
+        //protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        //{
+        //    if (e.CommandName == "Edit")
+        //    {
+        //        // Xử lý lệnh "Cập nhật"
+        //        int index = Convert.ToInt32(e.CommandArgument);
+        //        GridViewRow row = GridView1.Rows[index];
+        //        string productId = row.Cells[0].Text; // Lấy giá trị ProductID từ cột đầu tiên của hàng
+        //                                              // Thực hiện các thao tác cập nhật dữ liệu cho sản phẩm có ProductID tương ứng
+        //    }
+        //    else if (e.CommandName == "Delete")
+        //    {
+        //        // Xử lý lệnh "Xóa"
+        //        int index = Convert.ToInt32(e.CommandArgument);
+        //        GridViewRow row = GridView1.Rows[index];
+        //        string productId = row.Cells[0].Text; // Lấy giá trị ProductID từ cột đầu tiên của hàng
+        //                                              // Thực hiện các thao tác xóa sản phẩm có ProductID tương ứng
+        //    }
+        //}
+
+        protected void BindGridView()
         {
             // Điều kiện phân trang
-            int pageSize = 10;
-            int startIndex = (pageNumber - 1) * pageSize;
+            //int pageSize = 10;
+            //int startIndex = (pageNumber - 1) * pageSize;
 
             // Kết nối đến cơ sở dữ liệu và truy vấn dữ liệu
             //string connectionString = ConfigurationManager.ConnectionStrings["Data Source=ACER; Integrated Security=true;Initial Catalog=db_ECommerceShop; uid=sa; pwd=1; "].ConnectionString;
             conn.Open();
-            SqlCommand command = new SqlCommand("SELECT ProductID, Name, Description, Price FROM Products ORDER BY ProductID OFFSET @startIndex ROWS FETCH NEXT @pageSize ROWS ONLY", conn);
-                command.Parameters.AddWithValue("@startIndex", startIndex);
-                command.Parameters.AddWithValue("@pageSize", pageSize);
-                SqlDataReader reader = command.ExecuteReader();
-                DataTable dataTable = new DataTable();
-                dataTable.Columns.Add("ProductID");
-                dataTable.Columns.Add("Name");
-                dataTable.Columns.Add("Description");
-                dataTable.Columns.Add("Price", typeof(decimal));
-                while (reader.Read())
-                {
-                    DataRow row = dataTable.NewRow();
-                    row["ProductID"] = reader["ProductID"].ToString();
-                    row["Name"] = reader["Name"].ToString();
-                    row["Description"] = reader["Description"].ToString();
-                    row["Price"] = Convert.ToDecimal(reader["Price"]);
-                    dataTable.Rows.Add(row);
-                }
-                // Gán dữ liệu vào Gridview
-                //GridView1.DataSource = reader;
-                //GridView1.DataBind();
+            SqlCommand command = new SqlCommand("SELECT ProductID, Name, Description, Price,imgUrl FROM Products ", conn);
+            //command.Parameters.AddWithValue("@startIndex", startIndex);
+            //command.Parameters.AddWithValue("@pageSize", pageSize);
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            dataTable.Columns.Add("ProductID");
+            dataTable.Columns.Add("Name");
+            dataTable.Columns.Add("imgUrl");
+            dataTable.Columns.Add("Description");
+            dataTable.Columns.Add("Price", typeof(decimal));
+            while (reader.Read())
+            {
+                DataRow row = dataTable.NewRow();
+                row["ProductID"] = reader["ProductID"].ToString();
+                row["Name"] = reader["Name"].ToString();
+                row["imgUrl"] = "img/"+reader["imgUrl"].ToString();
+                row["Description"] = reader["Description"].ToString();
+                row["Price"] = Convert.ToDecimal(reader["Price"]);
+                dataTable.Rows.Add(row);
+            }
+            // Gán dữ liệu vào Gridview
+            //GridView1.DataSource = reader;
+            //GridView1.DataBind();
 
-                reader.Close();
-                GridView1.DataSource = dataTable;
-                GridView1.DataBind();
-            
+            reader.Close();
+            GridView1.DataSource = dataTable;
+            GridView1.DataBind();
+
         }
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            BindGridView(e.NewPageIndex + 1); // Hiển thị trang mới khi chuyển sang trang khác
-        }
+        //protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        //{
+        //    GridView1.PageIndex = e.NewPageIndex;
+        //    BindGridView(e.NewPageIndex + 1); // Hiển thị trang mới khi chuyển sang trang khác
+        //}
 
         private int GetTotalProducts()
         {
@@ -181,7 +183,7 @@ namespace EcommerceShop
             if (e.CommandName == "Page")
             {
                 int pageIndex = int.Parse(e.CommandArgument.ToString());
-                BindGridView(pageIndex);
+                BindGridView();
             }
         }
 

@@ -51,22 +51,31 @@ namespace EcommerceShop
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
 
         /// <summary>
-        /// txtImageUrl control.
+        /// upAnh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImageUrl;
+        protected global::System.Web.UI.WebControls.FileUpload upAnh;
 
         /// <summary>
-        /// txtCategory control.
+        /// DropDownCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCategory;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownCategory;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
 
         /// <summary>
         /// txtSupplier control.
@@ -78,22 +87,22 @@ namespace EcommerceShop
         protected global::System.Web.UI.WebControls.TextBox txtSupplier;
 
         /// <summary>
-        /// btnupdate control.
+        /// lbTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnupdate;
+        protected global::System.Web.UI.WebControls.Label lbTB;
 
         /// <summary>
-        /// clear control.
+        /// btnSaveProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton clear;
+        protected global::System.Web.UI.WebControls.LinkButton btnSaveProduct;
 
         /// <summary>
         /// btnreturn control.

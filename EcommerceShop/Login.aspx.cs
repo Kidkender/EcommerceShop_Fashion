@@ -41,7 +41,7 @@ namespace EcommerceShop
                         //được đăng nhập 
                         Session["UserID"] = Convert.ToInt32(rows[0]["UserId"]);
 
-                        if (rows[0]["userrole"].ToString().Equals("admin"))
+                        if (rows[0]["username"].ToString().Equals("admin"))
                         {
                             Response.Redirect("/Admin.aspx");
 

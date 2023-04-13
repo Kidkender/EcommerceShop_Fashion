@@ -36,7 +36,10 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
+                            <%--<input class="form-control" type="text" placeholder="example@email.com">--%>
+                              <asp:TextBox runat="server" ID="txtEmail" class="form-control border-0 py-4" placeholder="Email của bạn" ></asp:TextBox>
+<asp:RequiredFieldValidator runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter your email." />
+<asp:RegularExpressionValidator runat="server" ControlToValidate="txtEmail" ErrorMessage="invalid email address." ValidationExpression="\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
@@ -115,19 +118,19 @@
                         <div class="col-md-6 form-group">
                             <label>Country</label>
                             <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
+                                <option selected>Ha Noi</option>
+                                <option>Hai Phong</option>
+                                <option>Bac Ninh</option>
+                                <option>Ha Nam</option>
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
+                            <input class="form-control" type="text" placeholder="Viet Nam">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
+                            <input class="form-control" type="text" placeholder="Nhat Ban">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>ZIP Code</label>
@@ -143,18 +146,24 @@
                     </div>
                     <div class="card-body">
                         <h5 class="font-weight-medium mb-3">Products</h5>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 1</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
+                        <asp:DataList runat="server" ID="GridView2"  Width="100%">
+                            <ItemTemplate>
+                                  <div class="d-flex justify-content-between">
+                                    <p><%# Eval("tensp") %></p>
+                                    <p style="float:right">$<%# Eval("gia") %></p>
+                                </div>
+                            </ItemTemplate>
+                              
+                        </asp:DataList>
+                 
+                   <%--     <div class="d-flex justify-content-between">
                             <p>Colorful Stylish Shirt 2</p>
                             <p>$150</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p>Colorful Stylish Shirt 3</p>
                             <p>$150</p>
-                        </div>
+                        </div>--%>
                         <hr class="mt-0">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
