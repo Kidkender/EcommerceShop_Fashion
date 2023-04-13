@@ -82,7 +82,7 @@
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <p class="text-right" style="font-size: larger;">15 Products</p>
                     <a href="Shop" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid img-center" src="img/Áo Peplum Cổ Cách Điệu.png" alt="">
+                        <img class="img-fluid img-center" src="img/ao.png" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0 text-center">
                         <asp:Label ID="LabCatelogi1" runat="server" Text="Label" CssClass="text-center">Áo</asp:Label>
@@ -189,7 +189,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/5 (1).png" style="width: 500px; height: 565px" alt="">
+                        <img class="img-fluid w-100" src="img/lisa.jpg" style="width: 500px; height: 565px" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">Áo Sơ Mi Phối Dây Rút Eo</h6>
@@ -207,7 +207,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/áo sơ mi - ap.jpg" style="width: 500px; height: 565px" alt="">
+                        <img class="img-fluid w-100" src="img/rose.jpg" style="width: 500px; height: 565px" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">Áo Tencel Trễ Vai Tay Phồng</h6>

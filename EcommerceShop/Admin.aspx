@@ -146,9 +146,10 @@
         <h1>Admin Dashboard</h1>
         <nav>
             <ul>
-                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="Admin">Sản phẩm</a></li>
                 <li><a href="#">Đơn hàng</a></li>
                 <li><a href="#">Người dùng</a></li>
+                <a href="Login?act=out" class="nav-item nav-link">Đăng xuất</a>
             </ul>
         </nav>
     </header>
@@ -156,8 +157,8 @@
     <section>
         <h2>Sản phẩm</h2>
 
-
-        <button>Thêm sản phẩm</button>
+        <a href="Create_Update_Products.aspx"><button >Thêm sản phẩm</button></a>
+        
 
 
     </section>
@@ -169,6 +170,7 @@
                     <Columns>
                         <asp:BoundField DataField="ProductID" HeaderText="ID" />
                         <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
+                        <asp:ImageField DataImageUrlField="imgUrl" ControlStyle-Width="200"  HeaderText="Image Product"  ></asp:ImageField>
                         <asp:BoundField DataField="Description" HeaderText="Mô tả" />
                         <asp:BoundField DataField="Price" HeaderText="Giá" />
 
@@ -176,16 +178,8 @@
                     <Columns>
                         <asp:TemplateField>
                             <ItemTemplate>
-<%--                                <asp:Button ID="btnEdit" CssClass="button"  runat="server" Text="Cập nhật" CommandName="Edit" />--%>
-                                <%--<button  ID="btnEdit" class="button"  runat="server" Text="Cập nhật" CommandName="Edit">
-                                    <a href="<%#DataItemIndex %>"></a>
-                                    Cập nhật</button>--%>
-                                 <button ID="btnEdit" class="button" runat="server" Text="Cập nhật" 
-                    CommandName="Edit" CommandArgument='<%# Eval("ProductID") %>'>
-                    Cập nhật
-                </button>
-                </button>
-                                <asp:Button ID="btnDelete" CssClass="button" runat="server" Text="Xóa" CommandName="Delete" OnClientClick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');" />
+                               <asp:LinkButton class="button" ID="btnUpdate" OnClientClick="return confirm('Bạn muốn sửa sản phẩm này không?')" runat="server"  OnClick="LinkUpdate_Click"> Cập nhập</asp:LinkButton>
+                               <asp:LinkButton class="button" style="background:red" ID="btnDelete" OnClientClick="return confirm('Bạn muốn xóa sản phẩm này không?')" runat="server"  OnClick="LinkDelete_Click"> Xóa</asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -201,9 +195,9 @@
        
     </asp:PlaceHolder>
     <asp:Repeater ID="repeaterPagination" runat="server" OnItemCommand="repeaterPagination_ItemCommand">
-    <ItemTemplate>
+<%--    <ItemTemplate>
         <asp:Button ID="btnPage" runat="server" CommandName="Page" CommandArgument='<%# Eval("PageIndex") %>' Text='<%# Eval("PageIndex") %>' />
-    </ItemTemplate>
+    </ItemTemplate>--%>
 </asp:Repeater>
 
 </body>

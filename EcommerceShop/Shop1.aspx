@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Shop1" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Shop1.aspx.cs" Inherits="EcommerceShop.Shop1" %>
+﻿<%@ Page Title="Shop1" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Shop1.aspx.cs" Inherits="EcommerceShop.Shop1"  EnableEventValidation="false" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -170,7 +170,9 @@
                     </div>
 
 
-                    <asp:DataList ID="dlProducts" runat="server" OnSelectedIndexChanged="dlProducts_SelectedIndexChanged">
+                    <asp:DataList ID="dlProducts" runat="server"  OnSelectedIndexChanged="dlProducts_SelectedIndexChanged" 
+                       RepeatLayout="Table"
+                        RepeatColumns="2">
                         <ItemTemplate>
 
                             <layouttemplate>
@@ -178,10 +180,10 @@
                                     <asp:PlaceHolder ID="ProductListPlaceholder" runat="server">
 
 
-                                           <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                           <div class="col-lg-12 col-md-6 col-sm-12 pb-1">
                                 <div class="card product-item border-0 mb-4">
                                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="<%# Eval("imgUrl") %>" style="width: 500px; height: 565px" alt="">
+                                        <img class="img-fluid w-100" src="img/<%# Eval("imgUrl") %>" style="max-width:500px;max-height:500px" alt="">
                                     </div>
                                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                         <h6 id="labProductname" name="labProductname" class="text-truncate mb-3"><%# Eval("name") %></h6>
@@ -206,12 +208,6 @@
                          
 
                         </ItemTemplate>
-
-
-
-
-
-
 
                     </asp:DataList>
 
@@ -267,3 +263,7 @@
 
     </script>
 </asp:Content>
+
+
+
+

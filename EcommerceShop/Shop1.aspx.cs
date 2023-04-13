@@ -20,8 +20,8 @@ namespace EcommerceShop
         {
             if (!IsPostBack)
             {
-                //string id = Request.QueryString["id"];
-                string id = "1";
+                string id = Request.QueryString["id"];
+                //string id = "1";
                 if (id != null)
                 {
                     // Xử lý giá trị của tham số id ở đây
